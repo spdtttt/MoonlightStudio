@@ -17,12 +17,14 @@ function Booking() {
   const [paymentCompleted, setPaymentCompleted] = useState(false);
   const [qrCodeDataURL, setQrCodeDataURL] = useState("");
 
+  // รายการงานบริการทั้งหมด & ราคา
   const services = [
     { id: "haircut", name: "ตัดผม", price: 300 },
     { id: "straightening", name: "ยืดผม", price: 1500 },
     { id: "perm", name: "ดัดผม", price: 1200 }
   ];
 
+  // รายชื่อช่างบริการทุกงานบริการ
   const stylists = {
     haircut: [
       { id: "ton", name: "คุณตัน", experience: "5 ปี", rating: "4.8" },
@@ -38,6 +40,7 @@ function Booking() {
     ]
   };
 
+  // เวลาที่ลูกค้าเลือกได้
   const timeSlots = [
     "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", 
     "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"
@@ -55,11 +58,13 @@ function Booking() {
     }
   };
 
+  // เลือกงานบริการ
   const handleServiceSelect = (serviceId) => {
     setSelectedService(serviceId);
     setSelectedStylist(""); // รีเซ็ตช่างเมื่อเปลี่ยนบริการ
   };
 
+  // ยืนยันการชำระเงิน
   const handlePaymentComplete = () => {
     setPaymentCompleted(true);
     // ส่งข้อมูลการจอง
@@ -71,7 +76,7 @@ function Booking() {
       customer: customerInfo,
       paymentCompleted: true
     });
-    alert("จองคิวสำเร็จแล้ว! เราจะติดต่อกลับไปในเร็วๆ นี้");
+    alert("ชำระเงินสำเร็จแล้ว! ทางร้านจะติดต่อกลับไปในเร็วๆนี้");
   };
 
   const getServicePrice = () => {
