@@ -76,7 +76,7 @@ function Booking() {
       customer: customerInfo,
       paymentCompleted: true
     });
-    alert("ชำระเงินสำเร็จแล้ว! ทางร้านจะติดต่อกลับไปในเร็วๆนี้");
+    alert("ชำระเงินสำเร็จแล้ว ทางร้านจะติดต่อกลับไปในเร็วๆนี้");
   };
 
   const getServicePrice = () => {
@@ -208,7 +208,7 @@ function Booking() {
               type="text"
               value={customerInfo.firstName}
               onChange={(e) => setCustomerInfo({...customerInfo, firstName: e.target.value})}
-              className="form-input w-full p-3 border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="form-input w-full p-3 border border-gray-300"
               placeholder="กรอกชื่อ"
             />
           </div>
@@ -218,7 +218,7 @@ function Booking() {
               type="text"
               value={customerInfo.lastName}
               onChange={(e) => setCustomerInfo({...customerInfo, lastName: e.target.value})}
-              className="form-input w-full p-3 border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="form-input w-full p-3 border border-gray-300"
               placeholder="กรอกนามสกุล"
             />
           </div>
@@ -229,7 +229,7 @@ function Booking() {
             type="tel"
             value={customerInfo.phone}
             onChange={(e) => setCustomerInfo({...customerInfo, phone: e.target.value})}
-            className="form-input w-full p-3 border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+            className="form-input w-full p-3 border border-gray-300"
             placeholder="กรอกเบอร์โทรศัพท์"
           />
         </div>
@@ -239,7 +239,7 @@ function Booking() {
             type="email"
             value={customerInfo.email}
             onChange={(e) => setCustomerInfo({...customerInfo, email: e.target.value})}
-            className="form-input w-full p-3 border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+            className="form-input w-full p-3 border border-gray-300"
             placeholder="กรอกอีเมล"
           />
         </div>

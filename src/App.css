@@ -143,7 +143,7 @@ html {
 }
 
 .form-input:focus {
-  transform: scale(1.02);
+  transform: scale(1.05);
   box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
 }
 
