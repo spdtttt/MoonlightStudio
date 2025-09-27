@@ -181,7 +181,12 @@ function Booking() {
 
   const renderStep2 = () => (
     <div className="booking-card max-w-4xl mx-auto p-8">
-      <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
+      <h2
+        className="text-3xl font-bold text-center mb-8 text-gray-800"
+        style={{
+          fontFamily: "Kanit",
+        }}
+      >
         เลือกช่างบริการ
       </h2>
       <div className="grid md:grid-cols-2 gap-6">
@@ -195,7 +200,12 @@ function Booking() {
                 : "border-gray-200 hover:border-purple-300 hover:shadow-md"
             }`}
           >
-            <h3 className="text-xl font-semibold mb-2 text-gray-800">
+            <h3
+              className="text-xl font-semibold mb-2 text-gray-800"
+              style={{
+                fontFamily: "Kanit",
+              }}
+            >
               {stylist.name}
             </h3>
             <p className="text-gray-600 mb-1">
@@ -210,7 +220,12 @@ function Booking() {
 
   const renderStep3 = () => (
     <div className="booking-card max-w-4xl mx-auto p-8">
-      <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
+      <h2
+        className="text-3xl font-bold text-center mb-8 text-gray-800"
+        style={{
+          fontFamily: "Kanit",
+        }}
+      >
         เลือกวันและเวลา
       </h2>
       <div className="grid md:grid-cols-2 gap-8">
@@ -252,7 +267,12 @@ function Booking() {
 
   const renderStep4 = () => (
     <div className="booking-card max-w-2xl mx-auto p-8">
-      <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
+      <h2
+        className="text-3xl font-bold text-center mb-8 text-gray-800"
+        style={{
+          fontFamily: "Kanit",
+        }}
+      >
         ข้อมูลลูกค้า
       </h2>
       <div className="space-y-6">
@@ -320,7 +340,12 @@ function Booking() {
 
   const renderStep5 = () => (
     <div className="booking-card max-w-2xl mx-auto p-8">
-      <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
+      <h2
+        className="text-3xl font-bold text-center mb-8 text-gray-800"
+        style={{
+          fontFamily: "Kanit",
+        }}
+      >
         ชำระเงิน
       </h2>
 
@@ -350,8 +375,19 @@ function Booking() {
             <span>{selectedTime}</span>
           </div>
           <div className="flex justify-between border-t pt-2 font-semibold text-lg">
-            <span>ราคารวม:</span>
-            <span className="text-purple-600">
+            <span
+              style={{
+                fontFamily: "Kanit",
+              }}
+            >
+              ราคารวม:
+            </span>
+            <span
+              className="text-purple-600"
+              style={{
+                fontFamily: "Kanit",
+              }}
+            >
               {getServicePrice().toLocaleString()} บาท
             </span>
           </div>
@@ -503,6 +539,9 @@ function Booking() {
               ? "bg-gray-300 text-gray-500 cursor-not-allowed rounded-xl"
               : "btn-secondary btn-loading text-white"
           }`}
+          style={{
+            fontFamily: "Kanit",
+          }}
         >
           ย้อนกลับ
         </button>
@@ -524,6 +563,9 @@ function Booking() {
                 ? "bg-gray-300 text-gray-500 cursor-not-allowed rounded-xl"
                 : "btn-primary btn-loading text-white"
             }`}
+            style={{
+              fontFamily: "Kanit",
+            }}
           >
             ถัดไป
           </button>
@@ -531,6 +573,9 @@ function Booking() {
           <button
             onClick={handlePaymentComplete}
             className="btn-primary btn-loading px-8 py-3 text-white font-semibold"
+            style={{
+              fontFamily: "Kanit",
+            }}
           >
             ยืนยันการชำระเงิน
           </button>
@@ -549,6 +594,9 @@ function Booking() {
                 ? "bg-gray-300 text-gray-500 cursor-not-allowed rounded-xl"
                 : "btn-primary btn-loading text-white"
             }`}
+            style={{
+              fontFamily: "Kanit",
+            }}
           >
             ถัดไป
           </button>
