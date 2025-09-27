@@ -21,7 +21,7 @@ function Navbar() {
 
   return (
     <nav
-      className="fixed bg-zinc-950/30 items-center flex"
+      className="fixed bg-zinc-950/30 items-center flex z-50"
       style={{ width: "100%", height: 85 }}
     >
       <a href="https://www.facebook.com/moonlighstudiosurat">

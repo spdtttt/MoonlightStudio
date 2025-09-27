@@ -287,12 +287,12 @@ function Booking() {
               <img 
                 src={qrCodeDataURL} 
                 alt="PromptPay QR Code" 
-                className="w-40 h-40 mx-auto"
+                className="w-40 h-40 mx-auto floating"
               />
             ) : (
               <div className="text-center">
                 <div className="w-32 h-32 bg-gray-200 rounded-lg mx-auto mb-2 flex items-center justify-center">
-                  <div className="text-gray-500 text-xs">กำลังสร้าง QR Code...</div>
+                  <div className="animate-pulse text-gray-500 text-xs">กำลังสร้าง QR Code...</div>
                 </div>
                 <p className="text-sm text-gray-600">PromptPay QR Code</p>
               </div>
@@ -308,7 +308,7 @@ function Booking() {
           </p>
           <button
             onClick={handlePaymentComplete}
-            className="btn-primary px-8 py-3 text-white font-semibold"
+            className="btn-primary btn-loading px-8 py-3 text-white font-semibold"
           >
             ยืนยันการชำระเงิน
           </button>
@@ -320,23 +320,31 @@ function Booking() {
   return (
     <div className="booking-container py-8">
       {/* Progress Bar */}
-      <div className="max-w-4xl mx-auto mb-8 mt-22">
+      <div className="max-w-4xl mx-auto mb-8 mt-25">
         <div className="flex items-center justify-between">
           {[1, 2, 3, 4, 5].map((step) => (
             <div key={step} className="flex items-center">
               <div
-                className={`progress-step w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
-                  step <= currentStep
-                    ? "bg-purple-500 text-white active"
+                className={`progress-step w-10 h-10 rounded-full flex items-center justify-center font-semibold relative ${
+                  step < currentStep
+                    ? "bg-purple-500 text-white completed"
+                    : step === currentStep
+                    ? "bg-white text-black active"
                     : "bg-gray-300 text-gray-600"
                 }`}
               >
-                {step}
+                {step < currentStep ? (
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                ) : (
+                  step
+                )}
               </div>
               {step < 5 && (
                 <div
-                  className={`w-12 h-1 mx-2 ${
-                    step < currentStep ? "bg-purple-500" : "bg-gray-300"
+                  className={`progress-line w-12 h-1 mx-3 rounded-full ${
+                    step < currentStep ? "bg-green-500 animated" : "bg-gray-300"
                   }`}
                 />
               )}
@@ -344,11 +352,11 @@ function Booking() {
           ))}
         </div>
         <div className="flex justify-between mt-2 text-sm text-white">
-          <span>เลือกบริการ</span>
-          <span>เลือกช่าง</span>
-          <span>เลือกเวลา</span>
-          <span>ข้อมูลลูกค้า</span>
-          <span>ชำระเงิน</span>
+          <span className={`step-label ${1 <= currentStep ? 'text-purple-200' : ''}`}>เลือกบริการ</span>
+          <span className={`step-label ${2 <= currentStep ? 'text-purple-200' : ''}`}>เลือกช่าง</span>
+          <span className={`step-label ${3 <= currentStep ? 'text-purple-200' : ''}`}>เลือกเวลา</span>
+          <span className={`step-label ${4 <= currentStep ? 'text-purple-200' : ''}`}>ข้อมูลลูกค้า</span>
+          <span className={`step-label ${5 <= currentStep ? 'text-purple-200' : ''}`}>ชำระเงิน</span>
         </div>
       </div>
 
@@ -360,14 +368,14 @@ function Booking() {
       {currentStep === 5 && renderStep5()}
 
       {/* Navigation Buttons */}
-      <div className="max-w-4xl mx-auto px-8 flex justify-between mt-7">
+      <div className="max-w-4xl mx-auto px-8 flex justify-between mt-8">
         <button
           onClick={handlePrevious}
           disabled={currentStep === 1}
           className={`px-6 py-3 font-semibold ${
             currentStep === 1
               ? "bg-gray-300 text-gray-500 cursor-not-allowed rounded-xl"
-              : "btn-secondary text-white"
+              : "btn-secondary btn-loading text-white"
           }`}
         >
           ย้อนกลับ
@@ -380,7 +388,7 @@ function Booking() {
             className={`px-6 py-3 font-semibold ${
               !customerInfo.firstName || !customerInfo.lastName || !customerInfo.phone || !customerInfo.email
                 ? "bg-gray-300 text-gray-500 cursor-not-allowed rounded-xl"
-                : "btn-primary text-white"
+                : "btn-primary btn-loading text-white"
             }`}
           >
             ถัดไป
@@ -388,7 +396,7 @@ function Booking() {
         ) : currentStep === 5 ? (
           <button
             onClick={handlePaymentComplete}
-            className="btn-primary px-8 py-3 text-white font-semibold"
+            className="btn-primary btn-loading px-8 py-3 text-white font-semibold"
           >
             ยืนยันการชำระเงิน
           </button>
@@ -405,7 +413,7 @@ function Booking() {
               (currentStep === 2 && !selectedStylist) ||
               (currentStep === 3 && (!selectedDate || !selectedTime))
                 ? "bg-gray-300 text-gray-500 cursor-not-allowed rounded-xl"
-                : "btn-primary text-white"
+                : "btn-primary btn-loading text-white"
             }`}
           >
             ถัดไป

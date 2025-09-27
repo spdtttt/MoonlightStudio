@@ -75,7 +75,7 @@ html {
 
 /* Booking Page Styles */
 .booking-container {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-image: url("./assets/bg.png");
   min-height: 100vh;
 }
 
@@ -117,24 +117,133 @@ html {
   transform: scale(1.05);
 }
 
+/* Progress Bar Animations */
 .progress-step {
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-step::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.progress-step:hover::before {
+  left: 100%;
 }
 
 .progress-step.active {
-  animation: pulse 2s infinite;
+  animation: activeStep 2s infinite, glow 1.5s ease-in-out infinite alternate;
 }
 
-@keyframes pulse {
+.progress-step.completed {
+  animation: completedStep 0.6s ease-out forwards;
+}
+
+@keyframes activeStep {
   0% {
-    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7);
+    box-shadow: 0 0 0 0 rgba(153, 153, 153, 0.7);
+    transform: scale(1.1);
   }
-  70% {
-    box-shadow: 0 0 0 10px rgba(139, 92, 246, 0);
+  50% {
+    box-shadow: 0 0 0 8px rgba(82, 82, 82, 0.4);
+    transform: scale(1.15);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    transform: scale(1.1);
   }
+}
+
+@keyframes glow {
+  0% {
+    filter: brightness(1);
+  }
+  100% {
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes completedStep {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    background: linear-gradient(135deg, #10b981, #059669);
+  }
+}
+
+/* Progress Line Animation */
+.progress-line {
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #577c74, #3f7c6f, #0b6955);
+  transition: width 1s ease-in-out;
+  border-radius: 9999px;
+}
+
+.progress-line.animated::after {
+  width: 100%;
+}
+
+/* Step Label Animation */
+.step-label {
+  transition: all 0.3s ease;
+  transform: translateY(0);
+  color: white;
+  font-family: "Kanit";
+  font-size: 1.2rem;
+}
+
+.step-label:hover {
+  transform: translateY(-2px);
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slideIn {
+  animation: slideIn 0.6s ease-out;
 }
 
 .form-input {
@@ -167,4 +276,56 @@ html {
 .btn-secondary:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Button Loading Animation */
+.btn-loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-loading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-loading:hover::before {
+  left: 100%;
+}
+
+/* Success Animation */
+@keyframes success {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.success-animation {
+  animation: success 0.6s ease-out;
+}
+
+/* Floating Animation for Cards */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
 }
