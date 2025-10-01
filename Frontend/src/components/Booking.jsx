@@ -167,6 +167,7 @@ function Booking() {
       .catch((err) => console.log(err));
   }, []);
 
+  // ขั้นตอนที่ 1
   const renderStep1 = () => (
     <div className="booking-card max-w-4xl mx-auto p-8">
       <h2
