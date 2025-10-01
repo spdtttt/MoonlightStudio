@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import QRCode from "qrcode";
 import "../App.css";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
 
 function Booking() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -66,20 +67,41 @@ function Booking() {
       time: selectedTime,
       customer: customerInfo,
     });
-    alert("ยืนยันการจองสำเร็จแล้ว ทางร้านจะติดต่อกลับไปเร็วๆนี้");
-    navigate("/");
-    fetch("http://localhost:8081/users/save-booking", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        service: selectedService,
-        stylist: selectedStylist,
-        date: selectedDate,
-        time: selectedTime,
-        customer: customerInfo,
-      }),
+  
+    Swal.fire({
+      title: "ต้องการจองคิวใช่มั้ย?",
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+      confirmButtonColor: "#16a34a",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch("http://localhost:8081/users/save-booking", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            service: selectedService,
+            stylist: selectedStylist,
+            date: selectedDate,
+            time: selectedTime,
+            customer: customerInfo,
+          }),
+        })
+          .then(() =>
+            Swal.fire({
+              title: "จองคิวสำเร็จ!",
+              icon: "success",
+              text: "ทางร้านจะติดต่อกลับไปโดยเร็ว",
+              confirmButtonText: "ตกลง",
+              confirmButtonColor: "#16a34a",
+            })
+          )
+          .then(() => {
+            navigate("/");
+          });
+      }
     });
   };
 
@@ -101,9 +123,7 @@ function Booking() {
           ? data.filter((b) => b.date === selectedDate).map((b) => b.time)
           : [];
 
-        const filtered = timeSlots.filter(
-          (t) => !timeBooked.includes(t)
-        );
+        const filtered = timeSlots.filter((t) => !timeBooked.includes(t));
         setAvailableTimeSlots(filtered);
 
         if (selectedTime && !filtered.includes(selectedTime)) {
