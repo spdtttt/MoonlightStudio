@@ -5,15 +5,9 @@
 ### 1. ติดตั้ง MySQL
 - ดาวน์โหลดและติดตั้ง MySQL จาก https://dev.mysql.com/downloads/
 - หรือใช้ XAMPP/WAMP ที่มี MySQL อยู่แล้ว
-
-### 2. สร้างฐานข้อมูล
-1. เปิด MySQL Command Line หรือ phpMyAdmin
-2. รันคำสั่ง SQL ในไฟล์ `database_setup.sql`:
-   ```bash
-   mysql -u root -p < database_setup.sql
    ```
 
-### 3. ตรวจสอบการเชื่อมต่อ
+### 2. ตรวจสอบการเชื่อมต่อ
 - แก้ไขข้อมูลการเชื่อมต่อใน `server.js` ถ้าจำเป็น:
   ```javascript
   const db = mysql.createConnection({
@@ -24,7 +18,7 @@
   })
   ```
 
-### 4. รัน Backend Server
+### 3. รัน Backend Server
 ```bash
 cd Backend
 npm install
@@ -33,7 +27,7 @@ npm start
 
 Server จะรันที่ http://localhost:8081
 
-### 5. ทดสอบ API
+### 4. ทดสอบ API
 - เปิดเบราว์เซอร์ไปที่ http://localhost:8081/stylists/haircut
 - ควรเห็นข้อมูล JSON ของช่างตัดผม
 
