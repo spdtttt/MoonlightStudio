@@ -19,7 +19,7 @@ function Home() {
                transition-transform duration-700 ease-out"
             ></div>
             <h1
-              className="text-8xl text-white relative hover-shadow explosive-text"
+              className="text-8xl text-white relative hover-shadow explosive-text 2xl:text-8xl sm:text-5xl"
               style={{
                 fontFamily: "Archivo Black",
                 fontWeight: "650",
@@ -28,7 +28,7 @@ function Home() {
               Moonlight Hair Studio
             </h1>
             <h1
-              className="text-5xl text-white drop-shadow-xl "
+              className="text-5xl text-white drop-shadow-xl 2xl:text-5xl sm:text-3xl"
               style={{
                 fontFamily: "Kanit",
                 fontWeight: "400",
@@ -49,7 +49,7 @@ function Home() {
               color: "white",
               scale: 1.2,
             }}
-            className="bg-white top-205 fixed shadow-sm z-15 bg-whit border-white rounded-full cursor-pointer text-2xl font-medium border-3 py-2.5 px-13 text-black absolute"
+            className="bg-white top-230 2xl:top-206 sm:top-180 fixed shadow-sm z-15 bg-white border-white rounded-full cursor-pointer text-2xl font-medium border-3 py-2.5 px-13 text-black absolute"
           >
             จองคิว
           </motion.button>

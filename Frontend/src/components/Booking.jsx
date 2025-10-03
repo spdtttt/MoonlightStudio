@@ -169,9 +169,9 @@ function Booking() {
 
   // ขั้นตอนที่ 1
   const renderStep1 = () => (
-    <div className="booking-card max-w-4xl mx-auto p-8">
+    <div className="booking-card max-w-4xl mx-auto p-8 2xl:max-w-4xl sm:max-w-xl">
       <h2
-        className="text-3xl font-bold text-center mb-8 text-gray-800"
+        className="text-3xl font-bold text-center mb-8 text-gray-800 2xl:text-3xl sm:text-2xl"
         style={{
           fontFamily: "Kanit",
         }}
@@ -189,7 +189,7 @@ function Booking() {
                 : "border-gray-200 hover:border-purple-300 hover:shadow-md"
             }`}
           >
-            <h3 className="text-xl font-semibold mb-2 text-gray-800">
+            <h3 className="text-xl font-semibold mb-2 text-gray-800 2xl:text-xl sm:text-lg">
               {service.name}
             </h3>
             <p className="text-lg text-purple-600 font-bold">
@@ -202,9 +202,9 @@ function Booking() {
   );
 
   const renderStep2 = () => (
-    <div className="booking-card max-w-4xl mx-auto p-8">
+    <div className="booking-card max-w-4xl mx-auto p-8 2xl:max-w-4xl sm:max-w-xl">
       <h2
-        className="text-3xl font-bold text-center mb-8 text-gray-800"
+        className="text-3xl font-bold text-center mb-8 text-gray-800 2xl:text-3xl sm:text-2xl"
         style={{
           fontFamily: "Kanit",
         }}
@@ -223,7 +223,7 @@ function Booking() {
             }`}
           >
             <h3
-              className="text-xl font-semibold mb-2 text-gray-800"
+              className="text-xl font-semibold mb-2 text-gray-800 2xl:text-xl sm:text-lg"
               style={{
                 fontFamily: "Kanit",
               }}
@@ -241,9 +241,9 @@ function Booking() {
   );
 
   const renderStep3 = () => (
-    <div className="booking-card max-w-4xl mx-auto p-8">
+    <div className="booking-card max-w-4xl mx-auto p-8 2xl:max-w-4xl sm:max-w-xl">
       <h2
-        className="text-3xl font-bold text-center mb-8 text-gray-800"
+        className="text-3xl font-bold text-center mb-8 text-gray-800 2xl:text-3xl sm:text-2xl"
         style={{
           fontFamily: "Kanit",
         }}
@@ -252,7 +252,7 @@ function Booking() {
       </h2>
       <div className="grid md:grid-cols-2 gap-8">
         <div>
-          <h3 className="text-xl font-semibold mb-4 text-gray-700">
+          <h3 className="text-xl font-semibold mb-4 text-gray-700 2xl:text-xl sm:text-lg">
             เลือกวันที่
           </h3>
           <input
@@ -268,7 +268,7 @@ function Booking() {
           />
         </div>
         <div>
-          <h3 className="text-xl font-semibold mb-4 text-gray-700">
+          <h3 className="text-xl font-semibold mb-4 text-gray-700 2xl:text-xl sm:text-lg">
             เลือกเวลา
           </h3>
           <div className="grid grid-cols-3 gap-2">
@@ -292,9 +292,9 @@ function Booking() {
   );
 
   const renderStep4 = () => (
-    <div className="booking-card max-w-2xl mx-auto p-8">
+    <div className="booking-card max-w-2xl mx-auto p-8 2xl:max-w-4xl sm:max-w-xl">
       <h2
-        className="text-3xl font-bold text-center mb-8 text-gray-800"
+        className="text-3xl font-bold text-center mb-8 text-gray-800 2xl:text-3xl sm:text-2xl" 
         style={{
           fontFamily: "Kanit",
         }}
@@ -367,7 +367,7 @@ function Booking() {
   return (
     <div className="booking-container py-8">
       {/* Progress Bar */}
-      <div className="max-w-4xl mx-auto mb-8 mt-25">
+      <div className="max-w-4xl mx-auto mb-8 mt-25 2xl:mt-25 2xl:mb-8 2xl:max-w-4xl sm:max-w-xl sm:mt-20">
         <div className="flex items-center justify-between">
           {[1, 2, 3, 4].map((step) => (
             <div key={step} className="flex items-center">
