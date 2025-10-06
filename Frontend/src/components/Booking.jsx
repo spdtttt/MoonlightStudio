@@ -17,6 +17,7 @@ function Booking() {
     email: "",
   });
   const [successBooking, setSuccessBooking] = useState(false);
+  const API_URL = "https://moonlightstudio-backend.onrender.com";
 
   const navigate = useNavigate();
 
@@ -76,7 +77,7 @@ function Booking() {
       confirmButtonColor: "#16a34a",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch("https://moonlightstudio-backend.onrender.com/users/save-booking", {
+        fetch(`${API_URL}/users/save-booking`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -116,7 +117,7 @@ function Booking() {
       return;
     }
 
-    fetch(`https://moonlightstudio-backend.onrender.com/users/get-booking?stylist=${selectedStylist}`)
+    fetch(`${API_URL}/users/get-booking?stylist=${selectedStylist}`)
       .then((res) => res.json())
       .then((data) => {
         const timeBooked = Array.isArray(data)
@@ -136,7 +137,7 @@ function Booking() {
   }, [selectedStylist, selectedDate]);
 
   useEffect(() => {
-    fetch("https://moonlightstudio-backend.onrender.com/stylists/haircut")
+    fetch(`${API_URL}/stylists/haircut`)
       .then((res) => res.json())
       .then((data) =>
         setStylists((prev) => ({
@@ -146,7 +147,7 @@ function Booking() {
       )
       .catch((err) => console.log(err));
 
-    fetch("https://moonlightstudio-backend.onrender.com/stylists/straightening")
+    fetch(`${API_URL}/stylists/straightening`)
       .then((res) => res.json())
       .then((data) =>
         setStylists((prev) => ({
@@ -156,7 +157,7 @@ function Booking() {
       )
       .catch((err) => console.log(err));
 
-    fetch("https://moonlightstudio-backend.onrender.com/stylists/perm")
+    fetch(`${API_URL}/stylists/perm`)
       .then((res) => res.json())
       .then((data) =>
         setStylists((prev) => ({
@@ -215,9 +216,9 @@ function Booking() {
         {stylists[selectedService]?.map((stylist) => (
           <div
             key={stylist.id}
-            onClick={() => setSelectedStylist(stylist.id)}
+            onClick={() => setSelectedStylist(stylist.name)}
             className={`stylist-card p-6 border-2 cursor-pointer ${
-              selectedStylist === stylist.id
+              selectedStylist === stylist.name
                 ? "border-purple-500 bg-purple-50 shadow-lg"
                 : "border-gray-200 hover:border-purple-300 hover:shadow-md"
             }`}

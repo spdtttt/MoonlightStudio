@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+const API_URL = "https://moonlightstudio-backend.onrender.com";
+
 // ย้าย AddModal ออกมาข้างนอก
 const AddModal = ({ isOpen, onClose, formData, setFormData, onSubmit }) => {
   if (!isOpen) return null;
@@ -53,9 +55,9 @@ const AddModal = ({ isOpen, onClose, formData, setFormData, onSubmit }) => {
               <option value="" disabled>
                 -- เลือกบริการ --
               </option>
-              <option value="ตัดผม">ตัดผม</option>
-              <option value="ดัดผม">ดัดผม</option>
-              <option value="ยืดผม">ยืดผม</option>
+              <option value="haircut">ตัดผม</option>
+              <option value="perm">ดัดผม</option>
+              <option value="straightening">ยืดผม</option>
             </select>
           </div>
 
@@ -108,7 +110,7 @@ const Stylists = () => {
 
   const fetchStylists = async () => {
     try {
-      const response = await fetch("https://moonlightstudio-backend.onrender.com/stylists");
+      const response = await fetch(`${API_URL}/stylists`);
       const data = await response.json();
       setStylists(data);
     } catch (error) {
@@ -120,7 +122,7 @@ const Stylists = () => {
     e.preventDefault();
 
     try {
-      await fetch("https://moonlightstudio-backend.onrender.com/add-stylist", {
+      await fetch(`${API_URL}/add-stylist`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -155,7 +157,7 @@ const Stylists = () => {
 
   const deleteStylist = async (id) => {
     try {
-      await fetch("https://moonlightstudio-backend.onrender.com/delete-stylist", {
+      await fetch(`${API_URL}/delete-stylist`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id }),
@@ -198,7 +200,7 @@ const Stylists = () => {
                 <td>{stylist.name}</td>
                 <td>{stylist.service}</td>
                 <td>{stylist.experience}</td>
-                <td className="text-center align-middle">
+                <td className="text-center align-middle w-50">
                   <button onClick={() => deleteStylist(stylist.id)} className="px-5 py-3 bg-red-500 rounded-lg text-white hover:bg-red-700 cursor-pointer font-bold">
                     DELETE
                   </button>

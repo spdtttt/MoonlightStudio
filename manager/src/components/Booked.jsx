@@ -1,11 +1,24 @@
 import { useEffect, useState } from "react";
 
 const Booked = () => {
+  const API_URL = "https://moonlightstudio-backend.onrender.com";
   const [booked, setBooked] = useState([]);
+  const [stylists, setStylists] = useState([]);
+  const [selectedStylist, setSelectedStylist] = useState("all");
+
+  const fetchStylists = async () => {
+    try {
+      const response = await fetch(`${API_URL}/stylists`);
+      const data = await response.json();
+      setStylists(data);
+    } catch (error) {
+      console.log("Error fetching stylists: ", error);
+    }
+  };
 
   const fetchBooked = async () => {
     try {
-      const response = await fetch("https://moonlightstudio-backend.onrender.com/get-booked");
+      const response = await fetch(`${API_URL}/get-booked`);
       const data = await response.json();
       console.log(data);
       setBooked(data);
@@ -17,24 +30,28 @@ const Booked = () => {
 
   const deleteBooked = async (id) => {
     try {
-      await fetch('https://moonlightstudio-backend.onrender.com/delete-booked', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id })
+      await fetch(`${API_URL}/delete-booked`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
       });
-      console.log('Deleted Booked id = ', id, ' Successfully!');
+      console.log("Deleted Booked id = ", id, " Successfully!");
       fetchBooked();
+    } catch (err) {
+      console.log("Error Delete Booked:", err);
+      return;
     }
-
-    catch(err) {
-      console.log("Error Delete Booked:", err)
-      return   
-    }
-  }
+  };
 
   useEffect(() => {
     fetchBooked();
+    fetchStylists();
   }, []);
+
+  const filteredBooked =
+    selectedStylist === "all"
+      ? booked
+      : booked.filter((a) => a.stylist === selectedStylist);
 
   return (
     <div>
@@ -43,6 +60,25 @@ const Booked = () => {
       </div>
 
       <div className="w-300 justify-self-start ml-5 h-1 bg-gray-300"></div>
+      
+      {/* ✅ Dropdown เลือกช่าง */}
+      <div className="p-5">
+        <label className="mr-2 font-semibold">
+          เลือกช่าง:
+        </label>
+        <select
+          value={selectedStylist}
+          onChange={(e) => setSelectedStylist(e.target.value)}
+          className="border px-3 py-2 rounded-md"
+        >
+          <option value="all">ทั้งหมด</option>
+          {stylists.map((stylist) => (
+            <option key={stylist.id} value={stylist.name}>
+              {stylist.name}
+            </option>
+          ))}
+        </select>
+      </div>
       <table className="w-full border-collapse">
         <thead>
           <tr>
@@ -55,7 +91,7 @@ const Booked = () => {
           </tr>
         </thead>
         <tbody>
-          {booked.map((book) => {
+          {filteredBooked.map((book, index) => {
             let customer = {};
             try {
               // ถ้าเป็น string JSON ให้ parse
@@ -69,7 +105,7 @@ const Booked = () => {
 
             return (
               <tr id="data" key={book.id}>
-                <td>{book.id}</td>
+                <td>{index + 1}</td>
                 <td>
                   {book.service === "haircut"
                     ? "ตัดผม"
