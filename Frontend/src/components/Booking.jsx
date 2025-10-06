@@ -233,7 +233,6 @@ function Booking() {
             <p className="text-gray-600 mb-1">
               ประสบการณ์: {stylist.experience}
             </p>
-            <p className="text-yellow-600 font-semibold">⭐ {stylist.rating}</p>
           </div>
         ))}
       </div>
