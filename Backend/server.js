@@ -150,7 +150,7 @@
 
 require('dotenv').config();
 const express = require("express");
-const mysql = require("mysql2"); // เปลี่ยนจาก "mysql" เป็น "mysql2"
+const mysql = require("mysql2");
 const cors = require("cors");
 
 const app = express();
@@ -165,15 +165,18 @@ const db = mysql.createConnection({
   port: process.env.DB_PORT
 });
 
-// เชื่อมต่อ database
 db.connect((err) => {
   if (err) {
-    console.error('❌ Database connection failed:', err.message);
+    console.error('Database connection failed:', err);
     return;
   }
-  console.log('✅ Connected to Railway MySQL!');
+  console.log('Connected to database');
 });
 
-app.get("/", (req, res) => {
-  return res.json("From backend side");
+// ... routes ของคุณ ...
+
+// ⚠️ สำคัญ: ต้องใช้ process.env.PORT
+const PORT = process.env.PORT || 8081;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
