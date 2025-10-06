@@ -120,7 +120,7 @@ const Stylists = () => {
     e.preventDefault();
 
     try {
-      await fetch("http://localhost:8081/add-stylist", {
+      await fetch("https://moonlightstudio-backend.onrender.com/add-stylist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -155,7 +155,7 @@ const Stylists = () => {
 
   const deleteStylist = async (id) => {
     try {
-      await fetch("http://localhost:8081/delete-stylist", {
+      await fetch("https://moonlightstudio-backend.onrender.com/delete-stylist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id }),
