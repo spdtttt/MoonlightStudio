@@ -5,7 +5,7 @@ const Booked = () => {
 
   const fetchBooked = async () => {
     try {
-      const response = await fetch("http://localhost:8081/get-booked");
+      const response = await fetch("https://moonlightstudio-backend.onrender.com/get-booked");
       const data = await response.json();
       console.log(data);
       setBooked(data);
@@ -17,7 +17,7 @@ const Booked = () => {
 
   const deleteBooked = async (id) => {
     try {
-      await fetch('http://localhost:8081/delete-booked', {
+      await fetch('https://moonlightstudio-backend.onrender.com/delete-booked', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id })

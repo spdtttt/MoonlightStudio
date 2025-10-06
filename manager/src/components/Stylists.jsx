@@ -108,7 +108,7 @@ const Stylists = () => {
 
   const fetchStylists = async () => {
     try {
-      const response = await fetch("http://localhost:8081/stylists");
+      const response = await fetch("https://moonlightstudio-backend.onrender.com/stylists");
       const data = await response.json();
       setStylists(data);
     } catch (error) {

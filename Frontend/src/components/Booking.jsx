@@ -76,7 +76,7 @@ function Booking() {
       confirmButtonColor: "#16a34a",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch("http://localhost:8081/users/save-booking", {
+        fetch("https://moonlightstudio-backend.onrender.com/users/save-booking", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -116,7 +116,7 @@ function Booking() {
       return;
     }
 
-    fetch(`http://localhost:8081/users/get-booking?stylist=${selectedStylist}`)
+    fetch(`https://moonlightstudio-backend.onrender.com/users/get-booking?stylist=${selectedStylist}`)
       .then((res) => res.json())
       .then((data) => {
         const timeBooked = Array.isArray(data)
@@ -136,7 +136,7 @@ function Booking() {
   }, [selectedStylist, selectedDate]);
 
   useEffect(() => {
-    fetch("http://localhost:8081/stylists/haircut")
+    fetch("https://moonlightstudio-backend.onrender.com/stylists/haircut")
       .then((res) => res.json())
       .then((data) =>
         setStylists((prev) => ({
@@ -146,7 +146,7 @@ function Booking() {
       )
       .catch((err) => console.log(err));
 
-    fetch("http://localhost:8081/stylists/straightening")
+    fetch("https://moonlightstudio-backend.onrender.com/stylists/straightening")
       .then((res) => res.json())
       .then((data) =>
         setStylists((prev) => ({
@@ -156,7 +156,7 @@ function Booking() {
       )
       .catch((err) => console.log(err));
 
-    fetch("http://localhost:8081/stylists/perm")
+    fetch("https://moonlightstudio-backend.onrender.com/stylists/perm")
       .then((res) => res.json())
       .then((data) =>
         setStylists((prev) => ({
