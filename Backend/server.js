@@ -34,7 +34,7 @@ app.get("/stylists", (req, res) => {
     if (err) return res.json(err);
     return res.json(data);
   });
-});
+}); 
 
 app.get("/stylists/haircut", (req, res) => {
   const sql = "SELECT * FROM stylists WHERE `service` = 'haircut'";
