@@ -232,7 +232,7 @@ function Booking() {
               {stylist.name}
             </h3>
             <p className="text-gray-600 mb-1">
-              ประสบการณ์: {stylist.experience} ปี
+              ประสบการณ์: {stylist.experience}
             </p>
           </div>
         ))}
