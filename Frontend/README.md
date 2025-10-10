@@ -1,12 +1,13 @@
-# Booking Hair Salon Website
+#  🖥️ ส่วนสำหรับลูกค้า (Frontend - Client Site)
+เป็นส่วนที่ลูกค้าใช้งานเพื่อจองบริการ
+- เลือกบริการ: ตัดผม, ยืดผม, หรือ ดัดผม
+- เลือกช่าง: สามารถเลือกช่างที่ต้องการได้
+- เลือกวัน/เวลา: ระบบแสดงวันและเวลาที่ว่างตามบริการและช่างที่เลือก
+- กรอกข้อมูลลูกค้า: ชื่อ, นามสกุล, เบอร์โทรศัพท์, อีเมล
+- ยืนยันการจอง: ส่งข้อมูลการจองไปยังระบบ Backend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🛠 เทคโนโลยีที่ใช้ (Technologies Used)
+React
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# 🚀 การเริ่มต้นใช้งาน (Getting Started)
+รัน npm run dev บนโปรเจ็กต์ Frontend
