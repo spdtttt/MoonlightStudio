@@ -7,19 +7,19 @@ function Home() {
 
   return (
     <>
-      <div className="background-container flex flex-col">
-        <div className="justify-center items-center text-center flex flex-1 flex-col overflow-hidden">
+      <div className="background-container flex flex-col min-h-screen">
+        <div className="justify-center items-center text-center flex flex-1 flex-col overflow-hidden px-4 sm:px-6 md:px-8">
           <motion.div
-            whileHover={{ scale: 1.13 }}
+            whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", duration: 1.5 }}
-            className="relative group w-full py-10"
+            className="relative group w-full py-6 sm:py-8 md:py-10 max-w-6xl"
           >
             <div
               className="absolute inset-0 bg-black/50 transform translate-x-full group-hover:translate-x-0
-               transition-transform duration-700 ease-out"
+               transition-transform duration-700 ease-out rounded-lg"
             ></div>
             <h1
-              className="text-8xl text-white relative hover-shadow explosive-text 2xl:text-8xl sm:text-5xl"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl text-white relative hover-shadow explosive-text leading-snug sm:leading-tight"
               style={{
                 fontFamily: "Archivo Black",
                 fontWeight: "650",
@@ -28,11 +28,10 @@ function Home() {
               Moonlight Hair Studio
             </h1>
             <h1
-              className="text-5xl text-white drop-shadow-xl 2xl:text-5xl sm:text-3xl"
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl text-white drop-shadow-xl mt-3 sm:mt-4 md:mt-5 leading-relaxed"
               style={{
                 fontFamily: "Kanit",
                 fontWeight: "400",
-                marginTop: "15px",
               }}
             >
               ร้านทำผมชายสไตล์เกาหลี สุราษฎร์ธานี
@@ -40,16 +39,21 @@ function Home() {
           </motion.div>
 
           <motion.button
-            onClick={() => navigate('/booking ')}
+            onClick={() => navigate('/booking')}
             style={{ fontFamily: "Kanit" }}
             transition={{ type: "spring", duration: 1.2 }}
             whileHover={{
               backgroundImage:
                 "linear-gradient(90deg,rgba(112, 165, 255, 1) 0%, rgba(0, 212, 255, 1) 100%)",
               color: "white",
-              scale: 1.2,
+              scale: 1.1,
             }}
-            className="bg-white top-230 2xl:top-206 sm:top-180 fixed shadow-sm z-15 bg-white border-white rounded-full cursor-pointer text-2xl font-medium border-3 py-2.5 px-13 text-black absolute"
+            whileTap={{ scale: 0.95 }}
+            className="fixed bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 left-1/2 transform -translate-x-1/2
+                       bg-white shadow-lg hover:shadow-xl z-50 border-white rounded-full cursor-pointer 
+                       text-base sm:text-lg md:text-xl lg:text-2xl font-medium border-2 sm:border-3
+                       py-2 sm:py-2.5 md:py-3 px-8 sm:px-10 md:px-12 lg:px-13 text-black
+                       transition-all duration-300"
           >
             จองคิว
           </motion.button>

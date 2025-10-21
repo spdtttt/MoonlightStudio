@@ -6,83 +6,11 @@ import "../App.css";
 
 function Service() {
   return (
-    <div className="flex h-150 2xl:h-150 sm:h-full w-full overflow-hidden">
+    <div className="flex flex-col lg:flex-row w-full min-h-screen lg:h-screen overflow-hidden">
+      {/* ตัดผม */}
       <motion.div
-        className="flex-1 relative items-center"
-        initial={{ opacity: 0, y: 250 }}
-        animate={{ opacity: 0, y: 250 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 1,
-          ease: "easeOut",
-        }}
-        viewport={{
-          once: true,
-          margin: "0px 0px 0px 0px",
-        }}
-      >
-        <img src={pic1} alt="" className="w-full h-full object-cover 2xl:h-full sm:h-70" />
-        <motion.h1
-          className="absolute top-120 left-1/2 -translate-x-1/2 text-white text-7xl 2xl:top-120 font-bold z-10 2xl:text-7xl sm:text-5xl sm:top-50"
-          style={{
-            fontFamily: "Kanit",
-            textShadow: "2px 2px 4px rgba(0,0,0,0.7)",
-          }}
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 1,
-            ease: "easeOut",
-            type: "spring",
-            bounce: 0.4,
-          }}
-          viewport={{ once: true }}
-        >
-          ตัดผม
-        </motion.h1>
-      </motion.div>
-
-      <motion.div
-        className="flex-1 relative"
-        initial={{ opacity: 0, y: 250 }}
-        animate={{ opacity: 0, y: 250 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.5,
-          ease: "easeOut",
-        }}
-        viewport={{
-          once: true,
-          margin: "0px 0px 0px 0px",
-        }}
-      >
-        <img src={pic2} alt="" className="w-full h-full object-cover 2xl:h-full sm:h-70" />
-        <motion.h1
-          className="absolute top-120 left-1/2 -translate-x-1/2 text-white text-7xl font-bold z-10 2xl:text-7xl 2xl:top-120 sm:text-5xl sm:top-103 whitespace-nowrap"
-          style={{
-            fontFamily: "Kanit",
-            textShadow: "2px 2px 4px rgba(0,0,0,0.7)",
-          }}
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: -400 }}
-          transition={{
-            duration: 1,
-            ease: "easeOut",
-            type: "spring",
-            bounce: 0.4,
-          }}
-          viewport={{ once: true }}
-        >
-          ดัดผม
-        </motion.h1>
-      </motion.div>
-
-      <motion.div
-        className="flex-1 relative"
-        initial={{ opacity: 0, y: 250 }}
-        animate={{ opacity: 0, y: 250 }}
+        className="flex-1 relative flex items-center justify-center min-h-[400px] lg:min-h-0"
+        initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{
           duration: 0.8,
@@ -90,24 +18,107 @@ function Service() {
         }}
         viewport={{
           once: true,
-          margin: "0px 0px 0px 0px",
+          amount: 0.3,
         }}
       >
-        <img src={pic3} alt="" className="w-full h-full object-cover 2xl:h-full sm:h-70" />
+        <img 
+          src={pic1} 
+          alt="ตัดผม" 
+          className="w-full h-full object-cover absolute inset-0" 
+        />
+        <div className="absolute inset-0 bg-black/30"></div>
         <motion.h1
-          className="absolute top-120 left-1/2 -translate-x-1/2 text-white text-7xl 2xl:top-120 font-bold z-10 whitespace-nowrap 2xl:text-7xl sm:text-4xl sm:top-53"
+          className="relative text-white text-5xl sm:text-6xl md:text-7xl lg:text-6xl xl:text-7xl font-bold z-10"
           style={{
             fontFamily: "Kanit",
-            textShadow: "2px 2px 4px rgba(0,0,0,0.7)",
+            textShadow: "2px 2px 8px rgba(0,0,0,0.8)",
           }}
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           transition={{
-            duration: 1,
+            duration: 0.6,
             ease: "easeOut",
-            type: "spring",
-            bounce: 0.4,
+            delay: 0.2,
+          }}
+          viewport={{ once: true }}
+        >
+          ตัดผม
+        </motion.h1>
+      </motion.div>
+
+      {/* ดัดผม */}
+      <motion.div
+        className="flex-1 relative flex items-center justify-center min-h-[400px] lg:min-h-0"
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.8,
+          ease: "easeOut",
+          delay: 0.2,
+        }}
+        viewport={{
+          once: true,
+          amount: 0.3,
+        }}
+      >
+        <img 
+          src={pic2} 
+          alt="ดัดผม" 
+          className="w-full h-full object-cover absolute inset-0" 
+        />
+        <div className="absolute inset-0 bg-black/30"></div>
+        <motion.h1
+          className="relative text-white text-5xl sm:text-6xl md:text-7xl lg:text-6xl xl:text-7xl font-bold z-10 whitespace-nowrap"
+          style={{
+            fontFamily: "Kanit",
+            textShadow: "2px 2px 8px rgba(0,0,0,0.8)",
+          }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.6,
+            ease: "easeOut",
+            delay: 0.2,
+          }}
+          viewport={{ once: true }}
+        >
+          ดัดผม
+        </motion.h1>
+      </motion.div>
+
+      {/* ยืดวอลลุ่ม */}
+      <motion.div
+        className="flex-1 relative flex items-center justify-center min-h-[400px] lg:min-h-0"
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.8,
+          ease: "easeOut",
+          delay: 0.4,
+        }}
+        viewport={{
+          once: true,
+          amount: 0.3,
+        }}
+      >
+        <img 
+          src={pic3} 
+          alt="ยืดวอลลุ่ม" 
+          className="w-full h-full object-cover absolute inset-0" 
+        />
+        <div className="absolute inset-0 bg-black/30"></div>
+        <motion.h1
+          className="relative text-white text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold z-10 whitespace-nowrap px-4"
+          style={{
+            fontFamily: "Kanit",
+            textShadow: "2px 2px 8px rgba(0,0,0,0.8)",
+          }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.6,
+            ease: "easeOut",
+            delay: 0.2,
           }}
           viewport={{ once: true }}
         >

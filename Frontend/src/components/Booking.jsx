@@ -60,15 +60,7 @@ function Booking() {
   // ยืนยันการชำระเงิน
   const handleSuccessBooking = () => {
     setSuccessBooking(true);
-    // ส่งข้อมูลการจอง
-    console.log("ข้อมูลการจอง:", {
-      service: selectedService,
-      stylist: selectedStylist,
-      date: selectedDate,
-      time: selectedTime,
-      customer: customerInfo,
-    });
-  
+    
     Swal.fire({
       title: "ต้องการจองคิวใช่มั้ย?",
       showCancelButton: true,
@@ -170,30 +162,30 @@ function Booking() {
 
   // ขั้นตอนที่ 1
   const renderStep1 = () => (
-    <div className="booking-card max-w-4xl mx-auto p-8 2xl:max-w-4xl sm:max-w-xl">
+    <div className="booking-card max-w-4xl mx-auto p-4 sm:p-6 md:p-8">
       <h2
-        className="text-3xl font-bold text-center mb-8 text-gray-800 2xl:text-3xl sm:text-2xl"
+        className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-gray-800"
         style={{
           fontFamily: "Kanit",
         }}
       >
         เลือกบริการ
       </h2>
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
         {services.map((service) => (
           <div
             key={service.id}
             onClick={() => handleServiceSelect(service.id)}
-            className={`service-card p-6 border-2 cursor-pointer ${
+            className={`service-card p-4 sm:p-6 border-2 rounded-lg cursor-pointer transition-all duration-300 ${
               selectedService === service.id
-                ? "border-purple-500 bg-purple-50 shadow-lg"
+                ? "border-purple-500 bg-purple-50 shadow-lg transform scale-105"
                 : "border-gray-200 hover:border-purple-300 hover:shadow-md"
             }`}
           >
-            <h3 className="text-xl font-semibold mb-2 text-gray-800 2xl:text-xl sm:text-lg">
+            <h3 className="text-lg sm:text-xl font-semibold mb-2 text-gray-800" style={{ fontFamily: "Kanit" }}>
               {service.name}
             </h3>
-            <p className="text-lg text-purple-600 font-bold">
+            <p className="text-base sm:text-lg text-purple-600 font-bold" style={{ fontFamily: "Kanit" }}>
               {service.price.toLocaleString()} บาท
             </p>
           </div>
@@ -203,35 +195,35 @@ function Booking() {
   );
 
   const renderStep2 = () => (
-    <div className="booking-card max-w-4xl mx-auto p-8 2xl:max-w-4xl sm:max-w-xl">
+    <div className="booking-card max-w-4xl mx-auto p-4 sm:p-6 md:p-8">
       <h2
-        className="text-3xl font-bold text-center mb-8 text-gray-800 2xl:text-3xl sm:text-2xl"
+        className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-gray-800"
         style={{
           fontFamily: "Kanit",
         }}
       >
         เลือกช่างบริการ
       </h2>
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         {stylists[selectedService]?.map((stylist) => (
           <div
             key={stylist.id}
             onClick={() => setSelectedStylist(stylist.name)}
-            className={`stylist-card p-6 border-2 cursor-pointer ${
+            className={`stylist-card p-4 sm:p-6 border-2 rounded-lg cursor-pointer transition-all duration-300 ${
               selectedStylist === stylist.name
-                ? "border-purple-500 bg-purple-50 shadow-lg"
+                ? "border-purple-500 bg-purple-50 shadow-lg transform scale-105"
                 : "border-gray-200 hover:border-purple-300 hover:shadow-md"
             }`}
           >
             <h3
-              className="text-xl font-semibold mb-2 text-gray-800 2xl:text-xl sm:text-lg"
+              className="text-lg sm:text-xl font-semibold mb-2 text-gray-800"
               style={{
                 fontFamily: "Kanit",
               }}
             >
               {stylist.name}
             </h3>
-            <p className="text-gray-600 mb-1">
+            <p className="text-sm sm:text-base text-gray-600 mb-1" style={{ fontFamily: "Kanit" }}>
               ประสบการณ์: {stylist.experience} ปี
             </p>
           </div>
@@ -241,18 +233,18 @@ function Booking() {
   );
 
   const renderStep3 = () => (
-    <div className="booking-card max-w-4xl mx-auto p-8 2xl:max-w-4xl sm:max-w-xl">
+    <div className="booking-card max-w-4xl mx-auto p-4 sm:p-6 md:p-8">
       <h2
-        className="text-3xl font-bold text-center mb-8 text-gray-800 2xl:text-3xl sm:text-2xl"
+        className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-gray-800"
         style={{
           fontFamily: "Kanit",
         }}
       >
         เลือกวันและเวลา
       </h2>
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
         <div>
-          <h3 className="text-xl font-semibold mb-4 text-gray-700 2xl:text-xl sm:text-lg">
+          <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-700" style={{ fontFamily: "Kanit" }}>
             เลือกวันที่
           </h3>
           <input
@@ -264,23 +256,24 @@ function Booking() {
                 .toISOString()
                 .split("T")[0]
             }
-            className="form-input w-full p-3 border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+            className="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
           />
         </div>
         <div>
-          <h3 className="text-xl font-semibold mb-4 text-gray-700 2xl:text-xl sm:text-lg">
+          <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-700" style={{ fontFamily: "Kanit" }}>
             เลือกเวลา
           </h3>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
             {availableTimeSlots.map((time) => (
               <button
                 key={time}
                 onClick={() => setSelectedTime(time)}
-                className={`time-slot p-3 border ${
+                className={`time-slot p-2 sm:p-3 border rounded-lg transition-all duration-300 ${
                   selectedTime === time
-                    ? "border-purple-500 bg-purple-500 text-white"
+                    ? "border-purple-500 bg-purple-500 text-white shadow-md"
                     : "border-gray-300 hover:border-purple-300 hover:bg-purple-50"
                 }`}
+                style={{ fontFamily: "Kanit" }}
               >
                 {time}
               </button>
@@ -292,19 +285,19 @@ function Booking() {
   );
 
   const renderStep4 = () => (
-    <div className="booking-card max-w-2xl mx-auto p-8 2xl:max-w-4xl sm:max-w-xl">
+    <div className="booking-card max-w-2xl mx-auto p-4 sm:p-6 md:p-8">
       <h2
-        className="text-3xl font-bold text-center mb-8 text-gray-800 2xl:text-3xl sm:text-2xl" 
+        className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-gray-800"
         style={{
           fontFamily: "Kanit",
         }}
       >
         ข้อมูลลูกค้า
       </h2>
-      <div className="space-y-6">
-        <div className="grid md:grid-cols-2 gap-4">
+      <div className="space-y-4 sm:space-y-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 mb-2" style={{ fontFamily: "Kanit" }}>
               ชื่อ
             </label>
             <input
@@ -313,12 +306,13 @@ function Booking() {
               onChange={(e) =>
                 setCustomerInfo({ ...customerInfo, firstName: e.target.value })
               }
-              className="form-input w-full p-3 border border-gray-300"
+              className="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
               placeholder="กรอกชื่อ"
+              style={{ fontFamily: "Kanit" }}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 mb-2" style={{ fontFamily: "Kanit" }}>
               นามสกุล
             </label>
             <input
@@ -327,13 +321,14 @@ function Booking() {
               onChange={(e) =>
                 setCustomerInfo({ ...customerInfo, lastName: e.target.value })
               }
-              className="form-input w-full p-3 border border-gray-300"
+              className="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
               placeholder="กรอกนามสกุล"
+              style={{ fontFamily: "Kanit" }}
             />
           </div>
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-gray-700 mb-2" style={{ fontFamily: "Kanit" }}>
             เบอร์โทรศัพท์ที่ติดต่อได้
           </label>
           <input
@@ -342,12 +337,13 @@ function Booking() {
             onChange={(e) =>
               setCustomerInfo({ ...customerInfo, phone: e.target.value })
             }
-            className="form-input w-full p-3 border border-gray-300"
+            className="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
             placeholder="กรอกเบอร์โทรศัพท์"
+            style={{ fontFamily: "Kanit" }}
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-gray-700 mb-2" style={{ fontFamily: "Kanit" }}>
             อีเมล
           </label>
           <input
@@ -356,8 +352,9 @@ function Booking() {
             onChange={(e) =>
               setCustomerInfo({ ...customerInfo, email: e.target.value })
             }
-            className="form-input w-full p-3 border border-gray-300"
+            className="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
             placeholder="กรอกอีเมล"
+            style={{ fontFamily: "Kanit" }}
           />
         </div>
       </div>
@@ -365,18 +362,19 @@ function Booking() {
   );
 
   return (
-    <div className="booking-container py-8">
+    <div className="booking-container min-h-screen py-6 sm:py-8 px-4">
       {/* Progress Bar */}
-      <div className="max-w-4xl mx-auto mb-8 mt-25 2xl:mt-25 2xl:mb-8 2xl:max-w-4xl sm:max-w-xl sm:mt-20">
-        <div className="flex items-center justify-between">
+      <div className="max-w-4xl mx-auto mb-6 sm:mb-8 mt-20 sm:mt-24 md:mt-28">
+        {/* Desktop Progress */}
+        <div className="hidden sm:flex items-center justify-between">
           {[1, 2, 3, 4].map((step) => (
             <div key={step} className="flex items-center">
               <div
-                className={`progress-step w-10 h-10 rounded-full flex items-center justify-center font-semibold relative ${
+                className={`progress-step w-10 h-10 rounded-full flex items-center justify-center font-semibold relative transition-all duration-300 ${
                   step < currentStep
                     ? "bg-purple-500 text-white completed"
                     : step === currentStep
-                    ? "bg-white text-black active"
+                    ? "bg-white text-black active border-2 border-purple-500"
                     : "bg-gray-300 text-gray-600"
                 }`}
               >
@@ -396,21 +394,39 @@ function Booking() {
                   step
                 )}
               </div>
-              {step < 5 && (
+              {step < 4 && (
                 <div
-                  className={`progress-line w-12 h-1 mx-3 rounded-full ${
-                    step < currentStep ? "bg-green-500 animated" : "bg-gray-300"
+                  className={`progress-line w-12 h-1 mx-3 rounded-full transition-all duration-500 ${
+                    step < currentStep ? "bg-purple-500 animated" : "bg-gray-300"
                   }`}
                 />
               )}
             </div>
           ))}
         </div>
-        <div className="flex justify-between mt-2 text-sm text-white">
+
+        {/* Mobile Progress */}
+        <div className="sm:hidden flex items-center justify-center mb-4">
+          <div className="text-white text-center">
+            <div className="text-3xl font-bold mb-2" style={{ fontFamily: "Kanit" }}>
+              {currentStep} / 4
+            </div>
+            <div className="text-sm text-purple-200" style={{ fontFamily: "Kanit" }}>
+              {currentStep === 1 && "เลือกบริการ"}
+              {currentStep === 2 && "เลือกช่าง"}
+              {currentStep === 3 && "เลือกเวลา"}
+              {currentStep === 4 && "ข้อมูลลูกค้า"}
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop Labels */}
+        <div className="hidden sm:flex justify-between mt-2 text-xs sm:text-sm text-white">
           <span
             className={`step-label ${
               1 <= currentStep ? "text-purple-200" : ""
             }`}
+            style={{ fontFamily: "Kanit" }}
           >
             เลือกบริการ
           </span>
@@ -418,6 +434,7 @@ function Booking() {
             className={`step-label ${
               2 <= currentStep ? "text-purple-200" : ""
             }`}
+            style={{ fontFamily: "Kanit" }}
           >
             เลือกช่าง
           </span>
@@ -425,6 +442,7 @@ function Booking() {
             className={`step-label ${
               3 <= currentStep ? "text-purple-200" : ""
             }`}
+            style={{ fontFamily: "Kanit" }}
           >
             เลือกเวลา
           </span>
@@ -432,6 +450,7 @@ function Booking() {
             className={`step-label ${
               4 <= currentStep ? "text-purple-200" : ""
             }`}
+            style={{ fontFamily: "Kanit" }}
           >
             ข้อมูลลูกค้า
           </span>
@@ -445,14 +464,14 @@ function Booking() {
       {currentStep === 4 && renderStep4()}
 
       {/* Navigation Buttons */}
-      <div className="max-w-4xl mx-auto px-8 flex justify-between mt-8">
+      <div className="max-w-4xl mx-auto px-4 flex justify-between mt-6 sm:mt-8 gap-4">
         <button
           onClick={handlePrevious}
           disabled={currentStep === 1}
-          className={`px-6 py-3 font-semibold ${
+          className={`px-4 sm:px-6 py-2 sm:py-3 font-semibold rounded-xl text-sm sm:text-base transition-all duration-300 ${
             currentStep === 1
-              ? "bg-gray-300 text-gray-500 cursor-not-allowed rounded-xl"
-              : "btn-secondary btn-loading text-white"
+              ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+              : "btn-secondary btn-loading text-white hover:shadow-lg"
           }`}
           style={{
             fontFamily: "Kanit",
@@ -470,13 +489,13 @@ function Booking() {
               !customerInfo.phone ||
               !customerInfo.email
             }
-            className={`px-6 py-3 font-semibold ${
+            className={`px-4 sm:px-6 py-2 sm:py-3 font-semibold rounded-xl text-sm sm:text-base transition-all duration-300 ${
               !customerInfo.firstName ||
               !customerInfo.lastName ||
               !customerInfo.phone ||
               !customerInfo.email
-                ? "bg-gray-300 text-gray-500 cursor-not-allowed rounded-xl"
-                : "btn-primary btn-loading text-white"
+                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                : "btn-primary btn-loading text-white hover:shadow-lg"
             }`}
             style={{
               fontFamily: "Kanit",
@@ -492,12 +511,12 @@ function Booking() {
               (currentStep === 2 && !selectedStylist) ||
               (currentStep === 3 && (!selectedDate || !selectedTime))
             }
-            className={`px-6 py-3 font-semibold ${
+            className={`px-4 sm:px-6 py-2 sm:py-3 font-semibold rounded-xl text-sm sm:text-base transition-all duration-300 ${
               (currentStep === 1 && !selectedService) ||
               (currentStep === 2 && !selectedStylist) ||
               (currentStep === 3 && (!selectedDate || !selectedTime))
-                ? "bg-gray-300 text-gray-500 cursor-not-allowed rounded-xl"
-                : "btn-primary btn-loading text-white"
+                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                : "btn-primary btn-loading text-white hover:shadow-lg"
             }`}
             style={{
               fontFamily: "Kanit",
